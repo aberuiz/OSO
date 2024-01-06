@@ -1,16 +1,15 @@
-getNIPA <- function(UserID = "", TableName = "", Frequency = "", Year = "", ShowMillions = "N", ResultFormat = "JSON", Method = "GETDATA"){
+getNIPADetails <- function(UserID = "", TableName = "", Frequency = "", Year = "", ResultFormat = "JSON"){
   response <- httr2::request("https://apps.bea.gov/api/data") |>
     httr2::req_url_query(
       'UserID' = UserID,
-      'DatasetName' = DatasetName,
-#      'ParameterName' = ParameterName,
+      'DatasetName' = "NIUnderlyingDetail",
       'TableName' = TableName,
       'Frequency' = Frequency,
       'Year' = Year,
-      'ShowMillions' = ShowMillions,
       'Result' = ResultFormat,
-      'Method' =  Method
+      'Method' =  "GETDATA"
     ) |>
     httr2::req_perform() |>
     httr2::resp_body_json()
+  dplyr::bind_rows(response[["BEAAPI"]][["Results"]][["Data"]])
 }

@@ -1,11 +1,11 @@
-getDatasetList <- function(UserID = "", Method = "GETDATASETLIST", ResultFormat = "json"){
+beaDatasetList <- function(UserID = beaKey, ResultFormat = "json"){
   response <- httr2::request("https://apps.bea.gov/api/data") |>
     httr2::req_url_query(
       'UserID' = UserID,
-      'Method' =  Method,
+      'Method' = "GETDATASETLIST",
       'Result' = ResultFormat
     ) |>
     httr2::req_perform() |>
     httr2::resp_body_json()
-  data <- dplyr::bind_rows(response[["BEAAPI"]][["Results"]][["Dataset"]])
+  dplyr::bind_rows(response[["BEAAPI"]][["Results"]][["Dataset"]])
 }

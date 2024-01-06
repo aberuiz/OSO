@@ -1,8 +1,8 @@
-getParamList <- function(UserID = "", Method = "GetParameterList", DatasetName = "", ResultFormat = "json"){
+beaParamList <- function(UserID = beaKey, DatasetName = "", ResultFormat = "json"){
   response <- httr2::request("https://apps.bea.gov/api/data") |>
     httr2::req_url_query(
       'UserID' = UserID,
-      'Method' =  Method,
+      'Method' =  "GetParameterList",
       'DatasetName' = DatasetName,
       'Result' = ResultFormat
     ) |>
