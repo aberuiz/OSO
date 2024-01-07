@@ -17,7 +17,7 @@ beaParamValuesFiltered <- function(UserID = beaKey, DatasetName = "", TargetPara
     httr2::resp_body_json()
   if ("Error" %in% names(response$BEAAPI)) {
     warning(paste0(response$BEAAPI$Error$APIErrorCode,": ",response$BEAAPI$Error$APIErrorDescription))
-    return(dplyr::bind_rows(response[["BEAAPI"]][["Error"]]))
+    return(dplyr::bind_rows(response$BEAAPI$Error))
   }
   return(dplyr::bind_rows(response[["BEAAPI"]][["Results"]][["ParamValue"]]))
 }
