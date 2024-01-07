@@ -14,7 +14,7 @@ beaParamValues <- function(UserID = beaKey, DatasetName = "", ParameterName = ""
     httr2::req_perform() |>
     httr2::resp_body_json()
   if ("Error" %in% names(response$BEAAPI$Results)) {
-    warning(paste0(response$BEAAPI$Results$Error$APIErrorCode,": ",response$BEAAPI$Results$Error$APIErrorDescription))
+    warning(paste0(response$BEAAPI$Results$Error$APIErrorCode,": ",response$BEAAPI$Results$Error$APIErrorDescription, " Use beaParamList function to get a list of Parameters"))
     return(dplyr::bind_rows(response$BEAAPI$Results$Error))
   }
   return(dplyr::bind_rows(response[["BEAAPI"]][["Results"]][["ParamValue"]]))
