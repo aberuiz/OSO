@@ -24,5 +24,7 @@ beaRegional <- function(UserID = beaKey, TableName = "", LineCode = "", GeoFips 
   data <- dplyr::bind_rows(response$BEAAPI$Results$Data)
   notes <- dplyr::bind_rows(response$BEAAPI$Results$Notes)
   message(response$BEAAPI$Results$Statistic)
-  return(list(data, notes))
+  print(paste(notes[[2]]))
+#  return(list(data, notes))
+  return(data)
 }

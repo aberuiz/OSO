@@ -21,5 +21,6 @@ beaNIPA <- function(UserID = beaKey, TableName = "", Frequency = "", Year = "", 
     return(dplyr::bind_rows(response$BEAAPI$Error))
   }
   message(response$BEAAPI$Results$Statistic)
+  print(paste(response[["BEAAPI"]][["Results"]][["Notes"]][[1]][["NoteText"]]))
   return(dplyr::bind_rows(response$BEAAPI$Results$Data))
 }
