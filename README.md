@@ -1,13 +1,11 @@
 
 # OSO
 
-‘Something about BEA. Not Affiliated though.’
-
 The goal of OSO is to provide a straightforward way of reading data into
 R from the Bureau of Economic Analysis (BEA) and improving discovery of
 available data sets.
 
-# Installation
+## Installation
 
 You can install the development version of OSO from
 [GitHub](https:://github.com/) with:
@@ -19,9 +17,8 @@ devtools::install_github("aberuiz/OSO")
 
 ## API Registration
 
-Every function in OSO does require you an API key from BEA. You can
-register for a key on the [BEA
-Website](https://apps.bea.gov/api/signup/).
+Every function in OSO does require an API key from BEA. You can register
+for a key on the [BEA Website](https://apps.bea.gov/api/signup/).
 
 By default OSO will look for your API value saved to ‘beaKey’ when
 making API calls.
@@ -30,7 +27,7 @@ making API calls.
 beaKey <- "<Your 36 character API Key>"
 ```
 
-# Available Datasets
+## Available Datasets
 
 To begin, you may want to view all available datasets
 
@@ -135,7 +132,7 @@ beaParamValuesFiltered(
 #> # ℹ 24 more rows
 ```
 
-# Making the Call
+## Making the Call
 
 Now we are ready to make a call using ‘beaRegional’ for Real GDP in
 Construction for the entire United States using geoFips code ‘00000’.
@@ -157,12 +154,12 @@ beaRegional(
 #> 1 CAGDP9-11 00000   United States 2022       Thousands of c… 3         827768000
 ```
 
-# Multiple Values
+## Multiple Values
 
 For ‘Regional’ datasets you are able to request multiple returns for
 parameters ‘GeoFips’ and ‘Year’. You must insert values in a
 comma-delimited string. For requesting all available years you can also
-insert ‘ALL’ or ‘X’.
+insert ‘ALL’.
 
 ``` r
 beaRegional(
