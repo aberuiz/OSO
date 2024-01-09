@@ -20,17 +20,100 @@ The goal of OSO is to provide a straightforward way of reading data into R from 
 
 You can install the development version of OSO from [GitHub](https:://github.com/) with:
 
-```{r}
+```{r message=FALSE}
 # install.packages("devtools")
 devtools::install_github("aberuiz/OSO")
 ```
 
+## API Registration
 
-## Example
+Every function in OSO does require you an API key from BEA. You can register for a key on the [BEA Website](https://apps.bea.gov/api/signup/).
 
-To begin you may want to view all available data sets.
+By default OSO will look for your API value saved to 'beaKey' when making API calls.
+
+```{r eval=FALSE}
+beaKey <- "<Your 36 character API Key>"
+```
+
+```{r echo=FALSE, message=FALSE}
+beaKey <- Sys.getenv("beaKey")
+```
+
+# Available Datasets
+
+To begin, you may want to view all available datasets
 
 ```{r example}
 library(OSO)
+beaDatasetList()
 ```
 
+## Finding Parameters & Values
+
+For this vignette, we'll focus on accessing the 'Regional' dataset.
+
+Before making a call using 'beaRegional' you may want to look at the parameters necessary to do so.
+
+Using 'beaParamList' we can get the list of parameters we can use for the 'Regional' dataset.
+
+```{r}
+beaParamList(
+  DatasetName = "Regional"
+)
+```
+
+From here, you are returned all parameters you can use for this dataset.
+
+To get all available Values for each of the above parameters you can use 'beaParamValues'
+
+```{r}
+beaParamValues(
+  DatasetName = "Regional",
+  ParameterName = "TableName"
+)
+```
+
+For this example we'll look at Real GDP which is Table Value : "CAGDP9"
+
+You can get all available linecodes for the 'Regional' dataset you can run 'beaParamValues' and enter 'linecode' for the ParameterName. However, an easier command is 'beaParamValuesFiltered' which allows us to view linecodes only for our table of interest: CAGDP9.
+
+```{r}
+beaParamValuesFiltered(
+  DatasetName = "Regional",
+  TargetParameter = "linecode",
+  TableName = "CAGDP9"
+)
+```
+
+# Making the Call
+
+Now we are ready to make a call using 'beaRegional' for Real GDP in Construction for the entire United States using geoFips code '00000'.
+
+```{r}
+beaRegional(
+  TableName = "CAGDP9",
+  LineCode = 11,
+  GeoFips = "00000",
+  Year = 2022
+)
+```
+
+# Multiple Values
+
+For 'Regional' datasets you are able to request multiple returns for parameters 'GeoFips' and 'Year'. You must insert values in a comma-delimited string. For requesting all available years you can also insert 'ALL' or 'X'.
+
+```{r}
+beaRegional(
+  TableName = "CAGDP9",
+  LineCode = 11,
+  GeoFips = "00000, 48000",
+  Year = "ALL"
+)
+```
+
+## In Development
+
+  - Improvements to MNE
+  - Addition of IntlServTrade
+  - Addition of IntlServSTA
+  - Allow for XML Responses
