@@ -1,3 +1,6 @@
+#' @export
+#' @family OSO-utils
+#' @rdname bea-api-key
 beaSetKey <- function(APIkey = ""){
   if (!rlang::is_string(APIkey))
     rlang::abort("'APIkey` must be a string.")
@@ -8,6 +11,9 @@ beaSetKey <- function(APIkey = ""){
   Sys.setenv(beaKey = APIkey)
 }
 
+#' @export
+#' @family OSO-utils
+#' @rdname bea-api-key
 beaGetKey <- function(){
   key <- Sys.getenv(beaKey)
   if (is.na(key)){
