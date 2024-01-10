@@ -27,15 +27,18 @@ devtools::install_github("aberuiz/OSO")
 
 Every function in OSO does require an API key from BEA. You can register for a key on the [BEA Website](https://apps.bea.gov/api/signup/).
 
-By default OSO will look for your API value saved to 'beaKey' when making API calls.
+You can save your API Key into the system environment by using 'beaSetKey'
 
 ```{r eval=FALSE}
-beaKey <- "<Your 36 character API Key>"
+beaSetKey("<Your 36 character API Key>")
 ```
 
+You can recall your API Key by using 'beaGetKey'
 ```{r echo=FALSE, message=FALSE}
-beaKey <- Sys.getenv("beaKey")
+beaGetKey()
 ```
+
+
 
 ## Available Datasets
 

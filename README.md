@@ -13,6 +13,20 @@ You can install the development version of OSO from
 ``` r
 # install.packages("devtools")
 devtools::install_github("aberuiz/OSO")
+#> glue (1.6.2 -> 1.7.0) [CRAN]
+#> 
+#> The downloaded binary packages are in
+#>  /var/folders/gh/fbq3g2jj4h9b09knhwdpmxpc0000gn/T//RtmplrndOR/downloaded_packages
+#> ── R CMD build ─────────────────────────────────────────────────────────────────
+#>      checking for file ‘/private/var/folders/gh/fbq3g2jj4h9b09knhwdpmxpc0000gn/T/RtmplrndOR/remotes168c34386cb95/aberuiz-OSO-d050ef0/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/gh/fbq3g2jj4h9b09knhwdpmxpc0000gn/T/RtmplrndOR/remotes168c34386cb95/aberuiz-OSO-d050ef0/DESCRIPTION’
+#>   ─  preparing ‘OSO’:
+#>      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
+#>   ─  checking for LF line-endings in source and make files and shell scripts
+#>   ─  checking for empty or unneeded directories
+#>    Omitted ‘LazyData’ from DESCRIPTION
+#>   ─  building ‘OSO_0.1.0.tar.gz’
+#>      
+#> 
 ```
 
 ## API Registration
