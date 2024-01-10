@@ -11,22 +11,9 @@ You can install the development version of OSO from
 [GitHub](https:://github.com/) with:
 
 ``` r
-# install.packages("devtools")
+#install.packages("devtools")
 devtools::install_github("aberuiz/OSO")
-#> glue (1.6.2 -> 1.7.0) [CRAN]
-#> 
-#> The downloaded binary packages are in
-#>  /var/folders/gh/fbq3g2jj4h9b09knhwdpmxpc0000gn/T//RtmplrndOR/downloaded_packages
-#> ── R CMD build ─────────────────────────────────────────────────────────────────
-#>      checking for file ‘/private/var/folders/gh/fbq3g2jj4h9b09knhwdpmxpc0000gn/T/RtmplrndOR/remotes168c34386cb95/aberuiz-OSO-d050ef0/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/gh/fbq3g2jj4h9b09knhwdpmxpc0000gn/T/RtmplrndOR/remotes168c34386cb95/aberuiz-OSO-d050ef0/DESCRIPTION’
-#>   ─  preparing ‘OSO’:
-#>      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-#>   ─  checking for LF line-endings in source and make files and shell scripts
-#>   ─  checking for empty or unneeded directories
-#>    Omitted ‘LazyData’ from DESCRIPTION
-#>   ─  building ‘OSO_0.1.0.tar.gz’
-#>      
-#> 
+library(OSO)
 ```
 
 ## API Registration
@@ -34,19 +21,27 @@ devtools::install_github("aberuiz/OSO")
 Every function in OSO does require an API key from BEA. You can register
 for a key on the [BEA Website](https://apps.bea.gov/api/signup/).
 
-By default OSO will look for your API value saved to ‘beaKey’ when
-making API calls.
+For saving your API Key into the environment you can use `beaSetKey`
 
 ``` r
-beaKey <- "<Your 36 character API Key>"
+beaSetKey(APIkey = "<Your 36 character API Key>")
+```
+
+You can then recall your key and assign it to the default value ‘beaKey’
+for OSO using `beaGetKey`.
+
+``` r
+beaKey <- beaGetKey()
 ```
 
 ## Available Datasets
 
-To begin, you may want to view all available datasets
+Use `beaDatasetList` to view all datasets available through the BEA API.
+
+**Disclaimer** as of this writing, not all datasets can be accessed
+through OSO. Look below for a list of future development.
 
 ``` r
-library(OSO)
 beaDatasetList()
 #> # A tibble: 13 × 2
 #>    DatasetName             DatasetDescription                                
@@ -70,10 +65,10 @@ beaDatasetList()
 
 For this vignette, we’ll focus on accessing the ‘Regional’ dataset.
 
-Before making a call using ‘beaRegional’ you may want to look at the
-parameters necessary to do so.
+Before making a call using `beaRegional` you may want to look at the
+parameters necessary to make a request.
 
-Using ‘beaParamList’ we can get the list of parameters we can use for
+Using `beaParamList` we can get the list of parameters we can use for
 the ‘Regional’ dataset.
 
 ``` r
@@ -94,7 +89,7 @@ beaParamList(
 From here, you are returned all parameters you can use for this dataset.
 
 To get all available Values for each of the above parameters you can use
-‘beaParamValues’
+`beaParamValues`.
 
 ``` r
 beaParamValues(
@@ -120,8 +115,8 @@ beaParamValues(
 For this example we’ll look at Real GDP which is Table Value : “CAGDP9”
 
 You can get all available linecodes for the ‘Regional’ dataset you can
-run ‘beaParamValues’ and enter ‘linecode’ for the ParameterName.
-However, an easier command is ‘beaParamValuesFiltered’ which allows us
+run `beaParamValues` and enter ‘linecode’ for the ParameterName.
+However, an easier command is `beaParamValuesFiltered` which allows us
 to view linecodes only for our table of interest: CAGDP9.
 
 ``` r
@@ -146,9 +141,9 @@ beaParamValuesFiltered(
 #> # ℹ 24 more rows
 ```
 
-## Making the Call
+## Making the Request
 
-Now we are ready to make a call using ‘beaRegional’ for Real GDP in
+Now we are ready to make a call using `beaRegional` for Real GDP in
 Construction for the entire United States using geoFips code ‘00000’.
 
 ``` r
@@ -167,6 +162,9 @@ beaRegional(
 #>   <chr>     <chr>   <chr>         <chr>      <chr>           <chr>     <chr>    
 #> 1 CAGDP9-11 00000   United States 2022       Thousands of c… 3         827768000
 ```
+
+**Data Notes** For datasets that include notes they will be provided in
+the console. See the above request for an example.
 
 ## Multiple Values
 
