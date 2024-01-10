@@ -1,6 +1,3 @@
-#' @export
-#' @family OSO-utils
-#' @rdname bea-api-key
 beaSetKey <- function(APIkey = ""){
   if (!rlang::is_string(APIkey))
     rlang::abort("'APIkey` must be a string.")
