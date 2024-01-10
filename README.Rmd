@@ -36,7 +36,7 @@ beaSetKey(APIkey = "<Your 36 character API Key>")
 Follow up with `beaGetKey` to recall your api key later without saving the values in your script.
 
 ```{r echo=FALSE, message=FALSE}
-beaGetKey
+beaGetKey()
 ```
 
 ## Available Datasets

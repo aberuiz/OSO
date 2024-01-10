@@ -1,7 +1,7 @@
 beaGetKey <- function(){
-  key <- Sys.getenv("beaKey")
-  if (is.na(key)){
+  beaKey <- Sys.getenv("beaKey", unset = NA)
+  if (is.na(beaKey)){
     return(NULL)
   }
-  return(key)
+  return(beaKey)
 }
