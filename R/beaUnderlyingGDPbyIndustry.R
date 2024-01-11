@@ -1,11 +1,14 @@
-beaUnderlyingGDPbyIndustry <- function(UserID = beaKey, TableID = "", Industry = "", Year = "", ResultFormat = "json"){
-  if (nchar(UserID)!=36){
-    warning(paste0("'Invalid API Key: ",UserID,". Register @ <https://apps.bea.gov/API/signup/>'"))
-    return(paste0("'Invalid API Key: ",UserID,". Register @ <https://apps.bea.gov/API/signup/>'"))
+beaUnderlyingGDPbyIndustry <- function(TableID = "", Industry = "", Year = "", ResultFormat = "json", beaKey = NULL){
+  if (is.null(APIkey)){
+    beaKey <- getbeaKey()
+  }
+  if (nchar(beaKey)!=36){
+    warning(paste0("Invalid API Key: ",beaKey," Register <https://apps.bea.gov/API/signup/> Store with `setbeaKey`"))
+    return(paste0("Invalid API Key: ",beaKey," Register <https://apps.bea.gov/API/signup/> Store with `setbeaKey`"))
   }
   response <- httr2::request("https://apps.bea.gov/api/data") |>
     httr2::req_url_query(
-      'UserID' = UserID,
+      'UserID' = beaKey,
       'Method' = "GETDATA",
       'DatasetName' = "UnderlyingGDPbyIndustry",
       'TableID' = TableID,
@@ -23,5 +26,6 @@ beaUnderlyingGDPbyIndustry <- function(UserID = beaKey, TableID = "", Industry =
   data <- dplyr::bind_rows(response[["BEAAPI"]][["Results"]][[1]][["Data"]])
   notes <- dplyr::bind_rows(response[["BEAAPI"]][["Results"]][[1]][["Notes"]])
   message(response[["BEAAPI"]][["Results"]][[1]][["Statistic"]])
-  return(list(data, notes))
+  print(paste(notes))
+  return(data)
 }

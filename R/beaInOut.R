@@ -1,11 +1,14 @@
-beaInOut <- function(UserID = beaKey, TableID = "", Year = "", ResultFormat = "json"){
-  if (nchar(UserID)!=36){
-    warning(paste0("'Invalid API Key: ",UserID,". Register @ <https://apps.bea.gov/API/signup/>'"))
-    return(paste0("'Invalid API Key: ",UserID,". Register @ <https://apps.bea.gov/API/signup/>'"))
+beaInOut <- function(TableID = "", Year = "", ResultFormat = "json", beaKey = NULL){
+  if (is.null(beaKey)){
+    beaKey <- getbeaKey()
+  }
+  if (nchar(beaKey)!=36){
+    warning(paste0("Invalid API Key: ",beaKey," Register <https://apps.bea.gov/API/signup/> Store with `setbeaKey`"))
+    return(paste0("Invalid API Key: ",beaKey," Register <https://apps.bea.gov/API/signup/> Store with `setbeaKey`"))
   }
   response <- httr2::request("https://apps.bea.gov/api/data") |>
     httr2::req_url_query(
-      'UserID' = UserID,
+      'UserID' = beaKey,
       'Method' = "GETDATA",
       'DatasetName' = "InputOutput",
       'TableID' = TableID,

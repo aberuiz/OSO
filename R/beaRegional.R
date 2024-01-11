@@ -1,12 +1,15 @@
-beaRegional <- function(UserID = beaKey, TableName = "", LineCode = "", GeoFips = "", Year = "", ResultFormat = "json"){
-  if (nchar(UserID)!=36){
-    warning(paste0("'Invalid API Key: ",UserID,". Register @ <https://apps.bea.gov/API/signup/>'"))
-    return(paste0("'Invalid API Key: ",UserID,". Register @ <https://apps.bea.gov/API/signup/>'"))
+beaRegional <- function(TableName = "", LineCode = "", GeoFips = "", Year = "", ResultFormat = "json", beaKey = NULL){
+  if (is.null(beaKey)){
+    beaKey <- getbeaKey()
+  }
+  if (nchar(beaKey)!=36){
+    warning(paste0("Invalid API Key: ",beaKey," Register <https://apps.bea.gov/API/signup/> Store with `setbeaKey`"))
+    return(paste0("Invalid API Key: ",beaKey," Register <https://apps.bea.gov/API/signup/> Store with `setbeaKey`"))
   }
   GeoFips <- gsub(" ", "", GeoFips)
   response <- httr2::request("https://apps.bea.gov/api/data") |>
     httr2::req_url_query(
-      'UserID' = UserID,
+      'UserID' = beaKey,
       'Method' = "GETDATA",
       'DatasetName' = "Regional",
       'TableName' = TableName,
@@ -22,9 +25,9 @@ beaRegional <- function(UserID = beaKey, TableName = "", LineCode = "", GeoFips 
     return(dplyr::bind_rows(response$BEAAPI$Error))
   }
   data <- dplyr::bind_rows(response$BEAAPI$Results$Data)
+  data$DataValue <- as.numeric(data$DataValue)
   notes <- dplyr::bind_rows(response$BEAAPI$Results$Notes)
   message(response$BEAAPI$Results$Statistic)
   print(paste(notes[[2]]))
-#  return(list(data, notes))
   return(data)
 }

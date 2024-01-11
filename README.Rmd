@@ -28,16 +28,16 @@ library(OSO)
 
 Every function in OSO does require an API key from BEA. You can register for a key on the [BEA Website](https://apps.bea.gov/api/signup/).
 
-For saving your API Key into the environment you can use `beaSetKey`
+For saving your API Key into the environment you can use `setbeaKey`
 
 ```{r eval=FALSE}
-beaSetKey(APIkey = "<Your 36 character API Key>")
+setbeaKey(APIkey = "<Your 36 character API Key>")
 ```
 
-You can then recall your key and assign it to the default value 'beaKey' for OSO using `beaGetKey`.
+Once you have set up your key OSO will automatically check for your key in the stored environment using `getbeaKey` when you make a request. You can also use `getbeaKey` to check what BEA API Key you have stored.
 
-```{r message=FALSE}
-beaKey <- beaGetKey()
+```{r eval=FALSE, echo=FALSE, message=FALSE}
+
 ```
 
 
@@ -53,7 +53,7 @@ beaDatasetList()
 
 ## Finding Parameters & Values
 
-For this vignette, we'll focus on accessing the 'Regional' dataset.
+In this example, we'll focus on accessing the 'Regional' dataset.
 
 Before making a call using `beaRegional` you may want to look at the parameters necessary to make a request.
 
@@ -78,7 +78,8 @@ beaParamValues(
 
 For this example we'll look at Real GDP which is Table Value : "CAGDP9"
 
-You can get all available linecodes for the 'Regional' dataset you can run `beaParamValues` and enter 'linecode' for the ParameterName. However, an easier command is `beaParamValuesFiltered` which allows us to view linecodes only for our table of interest: CAGDP9.
+You can get all available linecodes for the 'Regional' dataset you can run `beaParamValues` and enter 'linecode' for the ParameterName. 
+However, an easier command is `beaParamValuesFiltered` which allows you to view linecodes only for your table of interest: "CAGDP9"
 
 ```{r}
 beaParamValuesFiltered(
