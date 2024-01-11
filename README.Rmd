@@ -18,7 +18,7 @@ The goal of OSO is to provide a straightforward way of reading data into R from 
 
 You can install the development version of OSO from [GitHub](https:://github.com/) with:
 
-```{r message=FALSE}
+```{r, message=FALSE}
 #install.packages("devtools")
 devtools::install_github("aberuiz/OSO")
 library(OSO)

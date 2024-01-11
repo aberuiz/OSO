@@ -21,18 +21,15 @@ library(OSO)
 Every function in OSO does require an API key from BEA. You can register
 for a key on the [BEA Website](https://apps.bea.gov/api/signup/).
 
-For saving your API Key into the environment you can use `beaSetKey`
+For saving your API Key into the environment you can use `setbeaKey`
 
 ``` r
-beaSetKey(APIkey = "<Your 36 character API Key>")
+setbeaKey(APIkey = "<Your 36 character API Key>")
 ```
 
-You can then recall your key and assign it to the default value ‘beaKey’
-for OSO using `beaGetKey`.
-
-``` r
-beaKey <- beaGetKey()
-```
+Once you have set up your key OSO will automatically check for your key
+in the stored environment using `getbeaKey` when you make a request. You
+can also use `getbeaKey` to check what BEA API Key you have stored.
 
 ## Available Datasets
 
@@ -63,7 +60,7 @@ beaDatasetList()
 
 ## Finding Parameters & Values
 
-For this vignette, we’ll focus on accessing the ‘Regional’ dataset.
+In this example, we’ll focus on accessing the ‘Regional’ dataset.
 
 Before making a call using `beaRegional` you may want to look at the
 parameters necessary to make a request.
@@ -116,8 +113,8 @@ For this example we’ll look at Real GDP which is Table Value : “CAGDP9”
 
 You can get all available linecodes for the ‘Regional’ dataset you can
 run `beaParamValues` and enter ‘linecode’ for the ParameterName.
-However, an easier command is `beaParamValuesFiltered` which allows us
-to view linecodes only for our table of interest: CAGDP9.
+However, an easier command is `beaParamValuesFiltered` which allows you
+to view linecodes only for your table of interest: “CAGDP9”
 
 ``` r
 beaParamValuesFiltered(
@@ -159,7 +156,7 @@ beaRegional(
 #> [3] "Last updated: December 7, 2023 -- new statistics for 2022, revised statistics for 2017-2021."
 #> # A tibble: 1 × 7
 #>   Code      GeoFips GeoName       TimePeriod CL_UNIT         UNIT_MULT DataValue
-#>   <chr>     <chr>   <chr>         <chr>      <chr>           <chr>     <chr>    
+#>   <chr>     <chr>   <chr>         <chr>      <chr>           <chr>         <dbl>
 #> 1 CAGDP9-11 00000   United States 2022       Thousands of c… 3         827768000
 ```
 
@@ -186,19 +183,19 @@ beaRegional(
 #> [3] "Last updated: December 7, 2023 -- new statistics for 2022, revised statistics for 2017-2021."
 #> # A tibble: 12 × 7
 #>    Code      GeoFips GeoName       TimePeriod CL_UNIT        UNIT_MULT DataValue
-#>    <chr>     <chr>   <chr>         <chr>      <chr>          <chr>     <chr>    
+#>    <chr>     <chr>   <chr>         <chr>      <chr>          <chr>         <dbl>
 #>  1 CAGDP9-11 00000   United States 2017       Thousands of … 3         840220000
 #>  2 CAGDP9-11 00000   United States 2018       Thousands of … 3         863755000
 #>  3 CAGDP9-11 00000   United States 2019       Thousands of … 3         882046000
 #>  4 CAGDP9-11 00000   United States 2020       Thousands of … 3         856487000
 #>  5 CAGDP9-11 00000   United States 2021       Thousands of … 3         888104000
 #>  6 CAGDP9-11 00000   United States 2022       Thousands of … 3         827768000
-#>  7 CAGDP9-11 48000   Texas         2017       Thousands of … 3         88478080 
-#>  8 CAGDP9-11 48000   Texas         2018       Thousands of … 3         87963012 
-#>  9 CAGDP9-11 48000   Texas         2019       Thousands of … 3         90383450 
-#> 10 CAGDP9-11 48000   Texas         2020       Thousands of … 3         87536636 
-#> 11 CAGDP9-11 48000   Texas         2021       Thousands of … 3         88865961 
-#> 12 CAGDP9-11 48000   Texas         2022       Thousands of … 3         83697711
+#>  7 CAGDP9-11 48000   Texas         2017       Thousands of … 3          88478080
+#>  8 CAGDP9-11 48000   Texas         2018       Thousands of … 3          87963012
+#>  9 CAGDP9-11 48000   Texas         2019       Thousands of … 3          90383450
+#> 10 CAGDP9-11 48000   Texas         2020       Thousands of … 3          87536636
+#> 11 CAGDP9-11 48000   Texas         2021       Thousands of … 3          88865961
+#> 12 CAGDP9-11 48000   Texas         2022       Thousands of … 3          83697711
 ```
 
 ## In Development
