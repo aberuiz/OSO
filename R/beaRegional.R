@@ -26,6 +26,8 @@ beaRegional <- function(TableName = "", LineCode = "", GeoFips = "", Year = "", 
   }
   data <- dplyr::bind_rows(response$BEAAPI$Results$Data)
   data$DataValue <- as.numeric(data$DataValue)
+  names(data)[7] <- gsub(" ","_",
+                         gsub(":","",response$BEAAPI$Results$Statistic))
   notes <- dplyr::bind_rows(response$BEAAPI$Results$Notes)
   message(response$BEAAPI$Results$Statistic)
   print(paste(notes[[2]]))
