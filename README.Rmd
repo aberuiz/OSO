@@ -28,13 +28,15 @@ library(OSO)
 
 Every function in OSO does require an API key from BEA. You can register for a key on the [BEA Website](https://apps.bea.gov/api/signup/).
 
-For saving your API Key into the environment you can use `setbeaKey`
+For saving your API Key into the environment you can use `setbeaKey`. To permanently store your BEA API Key in .Renviron use the argument 'install = TRUE'.
 
 ```{r eval=FALSE}
-setbeaKey(APIkey = "<Your 36 character API Key>")
+setbeaKey(APIkey = "<Your 36 character API Key>", install = TRUE)
 ```
 
-Once you have set up your key OSO will automatically check for your key in the stored environment using `getbeaKey` when you make a request. You can also use `getbeaKey` to check what BEA API Key you have stored.
+Once you have set up your key OSO will automatically check for your key in the stored environment using `getbeaKey` when you make a request.
+
+Use `getbeaKey` to check what BEA API Key you have stored. You can overwrite an existing key using the argument 'overwrite = TRUE' in `setbeaKey`.
 
 ```{r eval=FALSE, echo=FALSE, message=FALSE}
 

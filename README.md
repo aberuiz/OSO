@@ -21,15 +21,20 @@ library(OSO)
 Every function in OSO does require an API key from BEA. You can register
 for a key on the [BEA Website](https://apps.bea.gov/api/signup/).
 
-For saving your API Key into the environment you can use `setbeaKey`
+For saving your API Key into the environment you can use `setbeaKey`. To
+permanently store your BEA API Key in .Renviron use the argument
+‘install = TRUE’.
 
 ``` r
-setbeaKey(APIkey = "<Your 36 character API Key>")
+setbeaKey(APIkey = "<Your 36 character API Key>", install = TRUE)
 ```
 
 Once you have set up your key OSO will automatically check for your key
-in the stored environment using `getbeaKey` when you make a request. You
-can also use `getbeaKey` to check what BEA API Key you have stored.
+in the stored environment using `getbeaKey` when you make a request.
+
+Use `getbeaKey` to check what BEA API Key you have stored. You can
+overwrite an existing key using the argument ‘overwrite = TRUE’ in
+`setbeaKey`.
 
 ## Available Datasets
 
@@ -155,9 +160,9 @@ beaRegional(
 #> [2] "For the All industry total and Government and government enterprises, the difference between the United States and Metropolitan and Nonmetropolitan portions reflects overseas activity, economic activity taking place outside the borders of the United States by the military and associated federal civilian support staff."
 #> [3] "Last updated: December 7, 2023 -- new statistics for 2022, revised statistics for 2017-2021."
 #> # A tibble: 1 × 7
-#>   Code      GeoFips GeoName       TimePeriod CL_UNIT         UNIT_MULT DataValue
-#>   <chr>     <chr>   <chr>         <chr>      <chr>           <chr>         <dbl>
-#> 1 CAGDP9-11 00000   United States 2022       Thousands of c… 3         827768000
+#>   Code      GeoFips GeoName   TimePeriod CL_UNIT UNIT_MULT Real_GDP_Construction
+#>   <chr>     <chr>   <chr>     <chr>      <chr>   <chr>                     <dbl>
+#> 1 CAGDP9-11 00000   United S… 2022       Thousa… 3                     827768000
 ```
 
 **Data Notes** For datasets that include notes they will be provided in
@@ -182,20 +187,20 @@ beaRegional(
 #> [2] "For the All industry total and Government and government enterprises, the difference between the United States and Metropolitan and Nonmetropolitan portions reflects overseas activity, economic activity taking place outside the borders of the United States by the military and associated federal civilian support staff."
 #> [3] "Last updated: December 7, 2023 -- new statistics for 2022, revised statistics for 2017-2021."
 #> # A tibble: 12 × 7
-#>    Code      GeoFips GeoName       TimePeriod CL_UNIT        UNIT_MULT DataValue
-#>    <chr>     <chr>   <chr>         <chr>      <chr>          <chr>         <dbl>
-#>  1 CAGDP9-11 00000   United States 2017       Thousands of … 3         840220000
-#>  2 CAGDP9-11 00000   United States 2018       Thousands of … 3         863755000
-#>  3 CAGDP9-11 00000   United States 2019       Thousands of … 3         882046000
-#>  4 CAGDP9-11 00000   United States 2020       Thousands of … 3         856487000
-#>  5 CAGDP9-11 00000   United States 2021       Thousands of … 3         888104000
-#>  6 CAGDP9-11 00000   United States 2022       Thousands of … 3         827768000
-#>  7 CAGDP9-11 48000   Texas         2017       Thousands of … 3          88478080
-#>  8 CAGDP9-11 48000   Texas         2018       Thousands of … 3          87963012
-#>  9 CAGDP9-11 48000   Texas         2019       Thousands of … 3          90383450
-#> 10 CAGDP9-11 48000   Texas         2020       Thousands of … 3          87536636
-#> 11 CAGDP9-11 48000   Texas         2021       Thousands of … 3          88865961
-#> 12 CAGDP9-11 48000   Texas         2022       Thousands of … 3          83697711
+#>    Code      GeoFips GeoName  TimePeriod CL_UNIT UNIT_MULT Real_GDP_Construction
+#>    <chr>     <chr>   <chr>    <chr>      <chr>   <chr>                     <dbl>
+#>  1 CAGDP9-11 00000   United … 2017       Thousa… 3                     840220000
+#>  2 CAGDP9-11 00000   United … 2018       Thousa… 3                     863755000
+#>  3 CAGDP9-11 00000   United … 2019       Thousa… 3                     882046000
+#>  4 CAGDP9-11 00000   United … 2020       Thousa… 3                     856487000
+#>  5 CAGDP9-11 00000   United … 2021       Thousa… 3                     888104000
+#>  6 CAGDP9-11 00000   United … 2022       Thousa… 3                     827768000
+#>  7 CAGDP9-11 48000   Texas    2017       Thousa… 3                      88478080
+#>  8 CAGDP9-11 48000   Texas    2018       Thousa… 3                      87963012
+#>  9 CAGDP9-11 48000   Texas    2019       Thousa… 3                      90383450
+#> 10 CAGDP9-11 48000   Texas    2020       Thousa… 3                      87536636
+#> 11 CAGDP9-11 48000   Texas    2021       Thousa… 3                      88865961
+#> 12 CAGDP9-11 48000   Texas    2022       Thousa… 3                      83697711
 ```
 
 ## In Development
