@@ -22,5 +22,6 @@ beaInOut <- function(TableID = "", Year = "", ResultFormat = "json", beaKey = NU
     return(dplyr::bind_rows(response$BEAAPI$Error))
   }
   message(response[["BEAAPI"]][["Results"]][["Statistic"]])
-  return(dplyr::bind_rows(response[["BEAAPI"]][["Results"]][["Data"]]))
+  return(dplyr::bind_rows(response[["BEAAPI"]][["Results"]][[1]][["Data"]]))
+
 }

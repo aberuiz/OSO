@@ -1,4 +1,4 @@
-beaGDPbyIndustry <- function(TableID = "", Industry = "", Frequency = "", Year = "", ResultFormat = "json", beaKey = NULL){
+beaGDPbyIndustry <- function(TableID = "", Industry = "", Frequency = "", Year = "", ..., ResultFormat = "json", beaKey = NULL){
   if (is.null(beaKey)){
     beaKey <- getbeaKey()
   }
