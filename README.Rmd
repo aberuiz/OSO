@@ -16,11 +16,11 @@ The goal of OSO is to provide a straightforward way of reading data into R from 
 
 ## Installation
 
-You can install the development version of OSO from [GitHub](https:://github.com/) with:
+You can install the development version of OSO from [GitHub](https:://github.com/aberuiz/OSO) with:
 
-```{r, message=FALSE}
-#install.packages("devtools")
-devtools::install_github("aberuiz/OSO")
+```{r, message=FALSE, warning=FALSE}
+#install.packages("remotes")
+remotes::install_github("aberuiz/OSO")
 library(OSO)
 ```
 
@@ -37,11 +37,6 @@ setbeaKey(APIkey = "<Your 36 character API Key>", install = TRUE)
 Once you have set up your key OSO will automatically check for your key in the stored environment using `getbeaKey` when you make a request.
 
 Use `getbeaKey` to check what BEA API Key you have stored. You can overwrite an existing key using the argument 'overwrite = TRUE' in `setbeaKey`.
-
-```{r eval=FALSE, echo=FALSE, message=FALSE}
-
-```
-
 
 ## Available Datasets
 

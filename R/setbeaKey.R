@@ -1,3 +1,8 @@
+#' Set a BEA API key
+#'
+#'  @description
+#'  Every request requires a BEA API key to be set in order to complete a request.
+#'
 setbeaKey <- function(APIkey, install = FALSE, overwrite = FALSE){
 
   if (!rlang::is_string(APIkey)){

@@ -8,11 +8,11 @@ available data sets.
 ## Installation
 
 You can install the development version of OSO from
-[GitHub](https:://github.com/) with:
+[GitHub](https:://github.com/aberuiz/OSO) with:
 
 ``` r
-#install.packages("devtools")
-devtools::install_github("aberuiz/OSO")
+#install.packages("remotes")
+remotes::install_github("aberuiz/OSO")
 library(OSO)
 ```
 
@@ -156,13 +156,14 @@ beaRegional(
   Year = 2022
 )
 #> Real GDP: Construction
-#> [1] "Metropolitan Areas are defined (geographically delineated) by the Office of Management and Budget (OMB) bulletin no. 20-01 issued March 6, 2020."                                                                                                                                                                               
-#> [2] "For the All industry total and Government and government enterprises, the difference between the United States and Metropolitan and Nonmetropolitan portions reflects overseas activity, economic activity taking place outside the borders of the United States by the military and associated federal civilian support staff."
+#> [1] "For the All industry total and Government and government enterprises, the difference between the United States and Metropolitan and Nonmetropolitan portions reflects overseas activity, economic activity taking place outside the borders of the United States by the military and associated federal civilian support staff."
+#> [2] "Metropolitan Areas are defined (geographically delineated) by the Office of Management and Budget (OMB) bulletin no. 20-01 issued March 6, 2020."                                                                                                                                                                               
 #> [3] "Last updated: December 7, 2023 -- new statistics for 2022, revised statistics for 2017-2021."
-#> # A tibble: 1 × 7
+#> # A tibble: 1 × 8
 #>   Code      GeoFips GeoName   TimePeriod CL_UNIT UNIT_MULT Real_GDP_Construction
 #>   <chr>     <chr>   <chr>     <chr>      <chr>   <chr>                     <dbl>
 #> 1 CAGDP9-11 00000   United S… 2022       Thousa… 3                     827768000
+#> # ℹ 1 more variable: NoteRef <chr>
 ```
 
 **Data Notes** For datasets that include notes they will be provided in
@@ -183,10 +184,10 @@ beaRegional(
   Year = "ALL"
 )
 #> Real GDP: Construction
-#> [1] "Metropolitan Areas are defined (geographically delineated) by the Office of Management and Budget (OMB) bulletin no. 20-01 issued March 6, 2020."                                                                                                                                                                               
-#> [2] "For the All industry total and Government and government enterprises, the difference between the United States and Metropolitan and Nonmetropolitan portions reflects overseas activity, economic activity taking place outside the borders of the United States by the military and associated federal civilian support staff."
+#> [1] "For the All industry total and Government and government enterprises, the difference between the United States and Metropolitan and Nonmetropolitan portions reflects overseas activity, economic activity taking place outside the borders of the United States by the military and associated federal civilian support staff."
+#> [2] "Metropolitan Areas are defined (geographically delineated) by the Office of Management and Budget (OMB) bulletin no. 20-01 issued March 6, 2020."                                                                                                                                                                               
 #> [3] "Last updated: December 7, 2023 -- new statistics for 2022, revised statistics for 2017-2021."
-#> # A tibble: 12 × 7
+#> # A tibble: 12 × 8
 #>    Code      GeoFips GeoName  TimePeriod CL_UNIT UNIT_MULT Real_GDP_Construction
 #>    <chr>     <chr>   <chr>    <chr>      <chr>   <chr>                     <dbl>
 #>  1 CAGDP9-11 00000   United … 2017       Thousa… 3                     840220000
@@ -201,6 +202,7 @@ beaRegional(
 #> 10 CAGDP9-11 48000   Texas    2020       Thousa… 3                      87536636
 #> 11 CAGDP9-11 48000   Texas    2021       Thousa… 3                      88865961
 #> 12 CAGDP9-11 48000   Texas    2022       Thousa… 3                      83697711
+#> # ℹ 1 more variable: NoteRef <chr>
 ```
 
 ## In Development
