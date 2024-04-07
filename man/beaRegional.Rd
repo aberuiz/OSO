@@ -24,7 +24,7 @@ beaRegional(
 
 \item{ResultFormat}{Currently OSO can only return data properly in json}
 
-\item{beaKey}{Will search sys.env by default. You may provide your API key here or save one with `setbeaKey`}
+\item{beaKey}{Searches Sys.getenv by default. You may provide your API key here or save one with `setbeaKey`}
 }
 \value{
 Table and Line code values from BEA in a data frame

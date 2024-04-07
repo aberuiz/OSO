@@ -1,3 +1,16 @@
+#' Return data frame of parameter values
+#' @description
+#' Returns a data frame of available values for the provided parameter for provided dataset
+#'
+#' @param DatasetName The name of the dataset
+#' @param ParameterName Provides values for the named parameter
+#' @param ResultFormat Currently OSO can only return data properly in json
+#' @param beaKey Searches Sys.getenv by default. You may provide your API key here or save one with `setbeaKey`
+#' @returns data frame of available values for the provided parameter for provided dataset
+#' @examples
+#' beaParamValues(DataSetName = "Regional", ParameterName = "TableName")
+#'
+#' beaParamValues(DataSetName = "Regional", ParameterName = "GeoFips")
 beaParamValues <- function(DatasetName = "", ParameterName = "", ResultFormat = "json", beaKey = NULL){
   if (is.null(beaKey)){
     beaKey <- getbeaKey()

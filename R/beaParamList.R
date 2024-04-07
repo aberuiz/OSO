@@ -1,4 +1,15 @@
-beaParamList <- function(DatasetName = "", ResultFormat = "json", beaKey = NULL){
+#' Return dataset parameters
+#' @description
+#' Returns a data frame of all required and optional parameters for provided dataset
+#'
+#' @param DatasetName The name of the dataset
+#' @param ResultFormat Currently OSO can only return data properly in json
+#' @param beaKey Searches Sys.getenv by default. You may provide your API key here or save one with `setbeaKey`
+#' @returns returns a list of all required and optional parameters for the dataset
+#' @examples
+#' beaParamList(DataSetName = "Regional")
+#'
+beaParamList <- function(DatasetName = "", ..., ResultFormat = "json", beaKey = NULL){
   if (is.null(beaKey)){
     beaKey <- getbeaKey()
   }

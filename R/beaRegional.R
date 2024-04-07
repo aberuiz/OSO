@@ -8,7 +8,7 @@
 #' @param GeoFips Geographic area(s) for the above data
 #' @param Year Year(s) requested
 #' @param ResultFormat Currently OSO can only return data properly in json
-#' @param beaKey Will search sys.env by default. You may provide your API key here or save one with `setbeaKey`
+#' @param beaKey Searches Sys.getenv by default. You may provide your API key here or save one with `setbeaKey`
 #' @returns Table and Line code values from BEA in a data frame
 #'
 #' @examples
