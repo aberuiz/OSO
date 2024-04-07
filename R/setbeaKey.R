@@ -3,6 +3,9 @@
 #'  @description
 #'  Every request requires a BEA API key to be set in order to complete a request.
 #'
+#' @param APIkey 36 character string given to you by bea.gov
+#'
+#' @return Your BEA API key is set for data requests
 setbeaKey <- function(APIkey, install = FALSE, overwrite = FALSE){
 
   if (!rlang::is_string(APIkey)){

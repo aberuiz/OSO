@@ -12,3 +12,4 @@ Imports:
   dplyr,
   httr2,
   rlang
+RoxygenNote: 7.3.1
