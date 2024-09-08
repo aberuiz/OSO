@@ -8,4 +8,11 @@
 \description{
 Make Requests from the Bureau of Economic Analysis API
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://aberuiz.github.io/OSO/}
+}
+
+}
 \keyword{internal}
