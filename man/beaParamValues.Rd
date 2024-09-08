@@ -2,7 +2,7 @@
 % Please edit documentation in R/beaParamValues.R
 \name{beaParamValues}
 \alias{beaParamValues}
-\title{Return data frame of parameter values}
+\title{Get Parameter Values for BEA Dataset}
 \usage{
 beaParamValues(
   DatasetName = "",
@@ -12,22 +12,37 @@ beaParamValues(
 )
 }
 \arguments{
-\item{DatasetName}{The name of the dataset}
+\item{DatasetName}{character. The name of the BEA dataset to query.}
 
-\item{ParameterName}{Provides values for the named parameter}
+\item{ParameterName}{character. The name of the parameter for which to retrieve values.}
 
-\item{ResultFormat}{Currently OSO can only return data properly in json}
+\item{ResultFormat}{character. The format of the API response. Currently only "json" is supported. Default is "json".}
 
-\item{beaKey}{Searches Sys.getenv by default. You may provide your API key here or save one with `setbeaKey`}
+\item{beaKey}{character. Optional. The BEA API key. If NULL (default), it will be retrieved using `getbeaKey()`.}
 }
 \value{
-data frame of available values for the provided parameter for provided dataset
+A data frame containing available values for the specified parameter in the given dataset.
+        If an error occurs, it returns a data frame with error information.
 }
 \description{
-Returns a data frame of available values for the provided parameter for provided dataset
+Retrieves a data frame of available values for a specified parameter
+within a given Bureau of Economic Analysis (BEA) dataset.
+}
+\details{
+This function interacts with the BEA API to fetch parameter values for a specified dataset.
+It requires a valid BEA API key, which can be set using the `setbeaKey()` function or
+provided directly as an argument.
 }
 \examples{
-beaParamValues(DataSetName = "Regional", ParameterName = "TableName")
+# Get table names for the Regional dataset
+beaParamValues(DatasetName = "Regional", ParameterName = "TableName")
 
-beaParamValues(DataSetName = "Regional", ParameterName = "GeoFips")
+# Get available FIPS codes for the Regional dataset
+beaParamValues(DatasetName = "Regional", ParameterName = "GeoFips")
+
+}
+\seealso{
+\code{\link{setbeaKey}} for setting the BEA API key
+\code{\link{getbeaKey}} for retrieving the stored BEA API key
+\code{\link{beaParamList}} for getting a list of available parameters for a dataset
 }

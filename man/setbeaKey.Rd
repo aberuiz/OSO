@@ -7,12 +7,23 @@
 setbeaKey(APIkey, install = FALSE, overwrite = FALSE)
 }
 \arguments{
-\item{APIkey}{36 character string given to you by bea.gov}
+\item{APIkey}{A 36-character string provided by bea.gov}
+
+\item{install}{Logical; if TRUE, the API key will be saved in .Renviron for future sessions}
+
+\item{overwrite}{Logical; if TRUE, overwrites an existing BEA API key in .Renviron}
 }
 \value{
-Your BEA API key is set for data requests
+Invisibly returns the BEA API key
 }
 \description{
-@description
- Every request requires a BEA API key to be set in order to complete a request.
+Set a Bureau of Economic Analysis (BEA) API key for data requests. The key can be set
+for the current session or installed permanently in the user's .Renviron file.
+}
+\examples{
+\dontrun{
+setbeaKey("your-36-character-api-key-here")
+setbeaKey("your-36-character-api-key-here", install = TRUE)
+}
+
 }

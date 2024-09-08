@@ -2,7 +2,7 @@
 % Please edit documentation in R/beaRegional.R
 \name{beaRegional}
 \alias{beaRegional}
-\title{Return Regional BEA Tables}
+\title{Retrieve Regional BEA Tables}
 \usage{
 beaRegional(
   TableName = "",
@@ -14,30 +14,61 @@ beaRegional(
 )
 }
 \arguments{
-\item{TableName}{Specific table value to request}
+\item{TableName}{character. Specific table value to request (e.g., "CAGDP9").}
 
-\item{LineCode}{Specific line from the specified table to request}
+\item{LineCode}{numeric or character. Specific line from the specified table to request.}
 
-\item{GeoFips}{Geographic area(s) for the above data}
+\item{GeoFips}{character. Geographic area(s) for the requested data. Use FIPS codes.}
 
-\item{Year}{Year(s) requested}
+\item{Year}{numeric or character. Year(s) for which data is requested.}
 
-\item{ResultFormat}{Currently OSO can only return data properly in json}
+\item{ResultFormat}{character. Format of the returned data. Currently only "json" is supported.}
 
-\item{beaKey}{Searches Sys.getenv by default. You may provide your API key here or save one with `setbeaKey`}
+\item{beaKey}{character. BEA API key. If NULL, searches for key in system environment.}
 }
 \value{
-Table and Line code values from BEA in a data frame
+A data frame containing the requested BEA data with the following columns:
+  \itemize{
+    \item GeoFips: Geographic FIPS code
+    \item GeoName: Name of the geographic area
+    \item Code: Line code
+    \item TimePeriod: Year of the data
+    \item CL_UNIT: Classification unit
+    \item UNIT_MULT: Unit multiplier
+    \item DataValue: The actual data value (numeric)
+    \item [Statistic]: The name of the statistic (column name varies)
+  }
 }
 \description{
-Returns Regional BEA Tables. Table names and Line codes can be discovered with `beaParamValues`
+This function fetches data from Regional BEA Tables. It allows users to specify
+table names, line codes, geographic areas, and years for which they need data.
+Table names and line codes can be discovered using the `beaParamValues` function.
+}
+\note{
+- The function will display a message with the statistic name and print any notes returned by the API.
+- If an error occurs, the function will return the error information as a data frame.
 }
 \examples{
-beaRegional(
+\dontrun{
+# Fetch GDP data for the entire United States in 2022
+gdp_data <- beaRegional(
   TableName = "CAGDP9",
   LineCode = 11,
   GeoFips = "00000",
   Year = 2022
 )
 
+# Fetch data for multiple years
+multi_year_data <- beaRegional(
+  TableName = "CAGDP9",
+  LineCode = 11,
+  GeoFips = "00000",
+  Year = "2020,2021,2022"
+)
+}
+
+}
+\seealso{
+\code{\link{beaParamValues}} for discovering table names and line codes.
+\code{\link{setbeaKey}} for setting the BEA API key.
 }

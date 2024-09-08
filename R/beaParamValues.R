@@ -1,16 +1,38 @@
-#' Return data frame of parameter values
+#' Get Parameter Values for BEA Dataset
+#'
 #' @description
-#' Returns a data frame of available values for the provided parameter for provided dataset
+#' Retrieves a data frame of available values for a specified parameter
+#' within a given Bureau of Economic Analysis (BEA) dataset.
 #'
-#' @param DatasetName The name of the dataset
-#' @param ParameterName Provides values for the named parameter
-#' @param ResultFormat Currently OSO can only return data properly in json
-#' @param beaKey Searches Sys.getenv by default. You may provide your API key here or save one with `setbeaKey`
-#' @returns data frame of available values for the provided parameter for provided dataset
+#' @param DatasetName character. The name of the BEA dataset to query.
+#' @param ParameterName character. The name of the parameter for which to retrieve values.
+#' @param ResultFormat character. The format of the API response. Currently only "json" is supported. Default is "json".
+#' @param beaKey character. Optional. The BEA API key. If NULL (default), it will be retrieved using `getbeaKey()`.
+#'
+#' @return A data frame containing available values for the specified parameter in the given dataset.
+#'         If an error occurs, it returns a data frame with error information.
+#'
+#' @details
+#' This function interacts with the BEA API to fetch parameter values for a specified dataset.
+#' It requires a valid BEA API key, which can be set using the `setbeaKey()` function or
+#' provided directly as an argument.
+#'
 #' @examples
-#' beaParamValues(DataSetName = "Regional", ParameterName = "TableName")
+#' # Get table names for the Regional dataset
+#' beaParamValues(DatasetName = "Regional", ParameterName = "TableName")
 #'
-#' beaParamValues(DataSetName = "Regional", ParameterName = "GeoFips")
+#' # Get available FIPS codes for the Regional dataset
+#' beaParamValues(DatasetName = "Regional", ParameterName = "GeoFips")
+#'
+#' @seealso
+#' \code{\link{setbeaKey}} for setting the BEA API key
+#' \code{\link{getbeaKey}} for retrieving the stored BEA API key
+#' \code{\link{beaParamList}} for getting a list of available parameters for a dataset
+#'
+#' @importFrom httr2 request req_url_query req_perform resp_body_json
+#' @importFrom dplyr bind_rows
+#'
+#' @export
 beaParamValues <- function(DatasetName = "", ParameterName = "", ResultFormat = "json", beaKey = NULL){
   if (is.null(beaKey)){
     beaKey <- getbeaKey()

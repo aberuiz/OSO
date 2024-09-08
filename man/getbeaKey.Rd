@@ -2,10 +2,16 @@
 % Please edit documentation in R/getbeaKey.R
 \name{getbeaKey}
 \alias{getbeaKey}
-\title{Return BEA API key}
+\title{Retrieve BEA API Key}
 \usage{
 getbeaKey()
 }
+\value{
+Returns a character string containing the BEA API key if it's set in
+the environment. If the key is not set or is NA, the function returns NULL.
+}
 \description{
-Returns the BEA API Key set in the environment
+This function attempts to retrieve a the Bureau of Economic Analysis (BEA) API key
+that has been set in the system environment. It's used to authenticate
+requests to the BEA API for accessing economic data.
 }

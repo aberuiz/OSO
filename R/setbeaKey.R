@@ -1,11 +1,22 @@
 #' Set a BEA API key
 #'
-#'  @description
-#'  Every request requires a BEA API key to be set in order to complete a request.
+#' @description
+#' Set a Bureau of Economic Analysis (BEA) API key for data requests. The key can be set
+#' for the current session or installed permanently in the user's .Renviron file.
 #'
-#' @param APIkey 36 character string given to you by bea.gov
+#' @param APIkey A 36-character string provided by bea.gov
+#' @param install Logical; if TRUE, the API key will be saved in .Renviron for future sessions
+#' @param overwrite Logical; if TRUE, overwrites an existing BEA API key in .Renviron
 #'
-#' @return Your BEA API key is set for data requests
+#' @return Invisibly returns the BEA API key
+#'
+#' @examples
+#' \dontrun{
+#' setbeaKey("your-36-character-api-key-here")
+#' setbeaKey("your-36-character-api-key-here", install = TRUE)
+#' }
+#'
+#' @export
 setbeaKey <- function(APIkey, install = FALSE, overwrite = FALSE){
 
   if (!rlang::is_string(APIkey)){

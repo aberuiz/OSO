@@ -13,6 +13,17 @@ You can install the development version of OSO from
 ``` r
 #install.packages("remotes")
 remotes::install_github("aberuiz/OSO")
+#> 
+#> ── R CMD build ─────────────────────────────────────────────────────────────────
+#>      checking for file ‘/private/var/folders/gh/fbq3g2jj4h9b09knhwdpmxpc0000gn/T/RtmpZzEYtC/remotesb77157cbaa4a/aberuiz-OSO-0c932ec/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/gh/fbq3g2jj4h9b09knhwdpmxpc0000gn/T/RtmpZzEYtC/remotesb77157cbaa4a/aberuiz-OSO-0c932ec/DESCRIPTION’
+#>   ─  preparing ‘OSO’:
+#>      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
+#>   ─  checking for LF line-endings in source and make files and shell scripts
+#>   ─  checking for empty or unneeded directories
+#>    Omitted ‘LazyData’ from DESCRIPTION
+#>   ─  building ‘OSO_0.1.0.tar.gz’
+#>      
+#> 
 library(OSO)
 ```
 
