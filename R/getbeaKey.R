@@ -7,13 +7,9 @@
 #'
 #' @return
 #' Returns a character string containing the BEA API key if it's set in
-#' the environment. If the key is not set or is NA, the function returns NULL.
+#' the environment. If the key is not set, returns an empty string ("").
 #'
 #' @export
 getbeaKey <- function() {
-  beaKey <- Sys.getenv("beaKey")
-  if (beaKey == "" || is.na(beaKey)) {
-    return(NULL)
-  }
-  return(beaKey)
+  Sys.getenv("beaKey")
 }

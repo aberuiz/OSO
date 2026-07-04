@@ -39,7 +39,7 @@ beaMNE <- function(SeriesID = "", DirectionOfInvestment = "", Year = "", Classif
  #                        gsub(":","",response$BEAAPI$Results$Statistic))
  if (GetFootnotes == "yes"){
    print(dplyr::bind_rows(response$BEAAPI$Results$Notes))
- } else break
+ }
  # notes <- dplyr::bind_rows(response$BEAAPI$Results$Notes)
  # message(response$BEAAPI$Results$Statistic)
  # print(paste(notes[[2]]))

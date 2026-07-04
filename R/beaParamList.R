@@ -53,7 +53,7 @@ beaParamList <- function(DatasetName = "", ..., ResultFormat = "json", beaKey = 
       'UserID' = beaKey,
       'Method' =  "GetParameterList",
       'DatasetName' = DatasetName,
-      'Result' = ResultFormat
+      'ResultFormat' = ResultFormat
     ) |>
     httr2::req_perform() |>
     httr2::resp_body_json()

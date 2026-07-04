@@ -43,7 +43,7 @@ beaDatasetList <- function(ResultFormat = "json", beaKey = NULL){
     httr2::req_url_query(
       'UserID' = beaKey,
       'Method' = "GETDATASETLIST",
-      'Result' = ResultFormat
+      'ResultFormat' = ResultFormat
     ) |>
     httr2::req_perform() |>
     httr2::resp_body_json()

@@ -43,7 +43,7 @@ beaNIPADetails <- function(TableName = "", Frequency = "", Year = "", ResultForm
       'TableName' = TableName,
       'Frequency' = Frequency,
       'Year' = Year,
-      'Result' = ResultFormat,
+      'ResultFormat' = ResultFormat,
       'Method' =  "GETDATA"
     ) |>
     httr2::req_perform() |>

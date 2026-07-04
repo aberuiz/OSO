@@ -46,7 +46,7 @@ beaNIPA <- function(TableName = "", Frequency = "", Year = "", ShowMillions = "N
       'Frequency' = Frequency,
       'Year' = Year,
       'ShowMillions' = ShowMillions,
-      'Result' = ResultFormat
+      'ResultFormat' = ResultFormat
     ) |>
     httr2::req_perform() |>
     httr2::resp_body_json()

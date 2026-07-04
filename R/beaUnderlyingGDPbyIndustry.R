@@ -28,7 +28,7 @@
 #'
 #' @export
 beaUnderlyingGDPbyIndustry <- function(TableID = "", Industry = "", Year = "", ResultFormat = "json", beaKey = NULL){
-  if (is.null(APIkey)){
+  if (is.null(beaKey)){
     beaKey <- getbeaKey()
   }
   if (nchar(beaKey)!=36){

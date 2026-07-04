@@ -83,10 +83,13 @@ beaRegional <- function(TableName = "", LineCode = "", GeoFips = "", Year = "", 
   }
   data <- dplyr::bind_rows(response$BEAAPI$Results$Data)
   data$DataValue <- as.numeric(data$DataValue)
-  names(data)[7] <- gsub(" ","_",
-                         gsub(":","",response$BEAAPI$Results$Statistic))
+  statistic <- response$BEAAPI$Results$Statistic
+  if (!is.null(statistic) && "DataValue" %in% names(data)){
+    names(data)[names(data) == "DataValue"] <- gsub(" ","_",
+                                                    gsub(":","",statistic))
+  }
   notes <- dplyr::bind_rows(response$BEAAPI$Results$Notes)
-  message(response$BEAAPI$Results$Statistic)
-  print(paste(notes[[2]]))
+  message(statistic)
+  if (ncol(notes) >= 2) print(paste(notes[[2]]))
   return(data)
 }

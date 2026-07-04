@@ -47,7 +47,7 @@ beaParamValues <- function(DatasetName = "", ParameterName = "", ResultFormat = 
       'Method' =  "GETParameterValues",
       'DatasetName' = DatasetName,
       'ParameterName' = ParameterName,
-      'Result' = ResultFormat
+      'ResultFormat' = ResultFormat
     ) |>
     httr2::req_perform() |>
     httr2::resp_body_json()

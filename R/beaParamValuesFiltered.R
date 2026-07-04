@@ -62,7 +62,7 @@ beaParamValuesFiltered <- function(DatasetName = "", TargetParameter = "", Table
       'TargetParameter' = TargetParameter,
       'TableName' = TableName,
       'LineCode' = LineCode,
-      'Result' = ResultFormat
+      'ResultFormat' = ResultFormat
     ) |>
     httr2::req_perform() |>
     httr2::resp_body_json()

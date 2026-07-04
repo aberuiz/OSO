@@ -8,7 +8,7 @@ getbeaKey()
 }
 \value{
 Returns a character string containing the BEA API key if it's set in
-the environment. If the key is not set or is NA, the function returns NULL.
+the environment. If the key is not set, returns an empty string ("").
 }
 \description{
 This function attempts to retrieve a the Bureau of Economic Analysis (BEA) API key
