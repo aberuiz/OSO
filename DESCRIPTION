@@ -1,7 +1,7 @@
 Package: OSO
 Type: Package
 Title: BEA R Package
-Version: 0.1.0
+Version: 0.2.0
 Author: Abraham Ruiz
 Maintainer: <abraham@graycompass.com>
 Description: Make Requests from the Bureau of Economic Analysis API
