@@ -51,7 +51,7 @@
 #' \code{\link{beaParamValues}} for discovering table names and line codes.
 #' \code{\link{setbeaKey}} for setting the BEA API key.
 #'
-#' @importFrom httr2 request req_url_query req_perform resp_body_json
+#' @importFrom httr2 request req_url_query req_throttle req_retry req_perform resp_body_json
 #' @importFrom dplyr bind_rows
 #'
 #' @export
@@ -65,6 +65,8 @@ beaRegional <- function(TableName = "", LineCode = "", GeoFips = "", Year = "", 
   }
   GeoFips <- gsub(" ", "", GeoFips)
   response <- httr2::request("https://apps.bea.gov/api/data") |>
+    httr2::req_throttle(capacity = 100, fill_time_s = 60) |>
+    httr2::req_retry(max_tries = 3) |>
     httr2::req_url_query(
       'UserID' = beaKey,
       'Method' = "GETDATA",

@@ -3,14 +3,14 @@ Type: Package
 Title: BEA R Package
 Version: 0.2.0
 Author: Abraham Ruiz
-Maintainer: <abraham@graycompass.com>
+Maintainer: Abraham Ruiz <abraham@graycompass.com>
 Description: Make Requests from the Bureau of Economic Analysis API
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
   dplyr,
-  httr2,
+  httr2 (>= 1.1.0),
   rlang
 URL: https://aberuiz.github.io/OSO/
 Config/roxygen2/version: 8.0.0
