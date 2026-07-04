@@ -243,9 +243,22 @@ beaRegional(
 - [`beaGDPbyIndustry()`](https://aberuiz.github.io/OSO/reference/beaGDPbyIndustry.md)
   : Retrieve GDP by Industry data from the Bureau of Economic Analysis
   (BEA) API
+- [`beaIIP()`](https://aberuiz.github.io/OSO/reference/beaIIP.md) :
+  Retrieve IIP (International Investment Position) Data from BEA API
+- [`beaITA()`](https://aberuiz.github.io/OSO/reference/beaITA.md) :
+  Retrieve ITA (International Transactions Accounts) Data from BEA API
 - [`beaInOut()`](https://aberuiz.github.io/OSO/reference/beaInOut.md) :
   Retrieve Input-Output Data from the Bureau of Economic Analysis (BEA)
   API
+- [`beaIntlServSTA()`](https://aberuiz.github.io/OSO/reference/beaIntlServSTA.md)
+  : Retrieve IntlServSTA (International Services Supplied Through
+  Affiliates) Data from BEA API
+- [`beaIntlServTrade()`](https://aberuiz.github.io/OSO/reference/beaIntlServTrade.md)
+  : Retrieve IntlServTrade (International Services Trade) Data from BEA
+  API
+- [`beaMNE()`](https://aberuiz.github.io/OSO/reference/beaMNE.md) :
+  Retrieve MNE (Direct Investment and Multinational Enterprises) Data
+  from BEA API
 - [`beaNIPA()`](https://aberuiz.github.io/OSO/reference/beaNIPA.md) :
   Retrieve NIPA (National Income and Product Accounts) Data from BEA API
 - [`beaNIPADetails()`](https://aberuiz.github.io/OSO/reference/beaNIPADetails.md)
