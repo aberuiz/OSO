@@ -2,7 +2,7 @@
 
 ## Authors
 
-- . Maintainer.
+- **Abraham Ruiz**. Maintainer.
 
 ## Citation
 
